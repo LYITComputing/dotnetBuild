@@ -16,13 +16,12 @@ jobs:
       # Check out a copy of our repository on the ubuntu-latest virtual machine
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       # Run the Super-linter action
       - name: Run superlinter
         uses: super-linter/super-linter@v8.5.0
         # Specify environment variables for the superlinter
         env:
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_YAML: false
-          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
